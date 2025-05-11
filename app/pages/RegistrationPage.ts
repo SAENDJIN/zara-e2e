@@ -30,11 +30,7 @@ export class RegistrationPage extends BasePage {
         await this.nameInput.fill('test');
         await this.surnameInput.fill('test');
         await this.surnameInput.blur();
-
-        //IDK or understand why i need to click twice on a checkbox.
-        //I've spent over three hours here -_-
         await this.privacyCheckBox.click();
-        // await this.privacyCheckBox.click();
         await this.createAccountBtn.click();
     }
     async registerFailCheck() {
