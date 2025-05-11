@@ -1,9 +1,9 @@
 import { test as base } from "@playwright/test";
-import { CookieModal } from '../pages/cookieModal';
-import { SearchComponents } from "../pages/searchCompoment";
+import { CookieModal } from '../pages/CookieModal';
+import { SearchComponents } from "../pages/SearchCompoment";
 import { ProductPage } from "../pages/ProductPage";
-import { CartPage } from "../pages/cartPage";
-import { RegistrationPage } from "../pages/registrationPage";
+import { CartPage } from "../pages/CartPage";
+import { RegistrationPage } from "../pages/RegistrationPage";
 
 type Fixture = {
     cookieModal: CookieModal;
