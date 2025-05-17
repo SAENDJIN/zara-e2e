@@ -22,7 +22,6 @@ export class ProductPage extends BasePage {
         const sizeButtons = this.page.locator('[data-qa-action="size-in-stock"]');
 
         const count = await sizeButtons.count();
-        console.log(`Знайдено ${count} доступних розмірів.`);
 
         for (let i = 0; i < count; i++) {
             const size = sizeButtons.nth(i);

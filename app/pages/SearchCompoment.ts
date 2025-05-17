@@ -1,12 +1,14 @@
-import { Locator, Page} from "@playwright/test"
+import { expect, Locator, Page } from "@playwright/test"
 import { BasePage } from "./BasePage";
 
 export class SearchComponents extends BasePage {
     private productBtn: Locator;
+    private sizeSelectorModal: Locator;
 
     constructor(page: Page) {
         super(page);
-        this.productBtn = page.locator("[data-productid]")
+        this.productBtn = page.locator("[data-productid]");
+        this.sizeSelectorModal = page.locator('ul.size-selector-sizes');
     }
 
     async goto() {
@@ -15,16 +17,25 @@ export class SearchComponents extends BasePage {
 
     }
 
-    async clickOnProductWithMoreThanFourSizes(){
-        const products = await this.productBtn.all();
+    async clickOnProductWithFourOrMoreSizes() {
+        const products = this.productBtn;
+        const total = await products.count();
 
-        for(const product of products){
-            const countOfSize = (await product.locator('[data-qa-action="size-in-stock"]').all()).length;
+        for (let i = 0; i < total; i++) {
+            const product = products.nth(i);
+            await product.locator('button[data-qa-action="product-grid-open-size-selector"]').click();
 
-            if(countOfSize <= 4){
+            const sizeList = this.sizeSelectorModal;
+            await sizeList.waitFor({ state: 'visible' });
+
+            const sizeButtons = sizeList.locator('button[data-qa-action="size-in-stock"]');
+            const sizeCount = await sizeButtons.count();
+
+            if (sizeCount >= 4) {
                 await product.click();
                 break;
             }
+            await this.page.keyboard.press('Escape');
         }
     }
 }

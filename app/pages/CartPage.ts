@@ -17,8 +17,6 @@ export class CartPage extends BasePage {
 
         let removeButtons = await this.removeBtn.all();
 
-        console.log(`Знайдено ${removeButtons.length} товарів у кошику.`);
-
         for (let i = removeButtons.length - 1; i >= 0; i--) {
             if (i % 2 === 1) {
                 const btn = this.removeBtn.nth(i);

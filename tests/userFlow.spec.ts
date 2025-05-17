@@ -7,7 +7,7 @@ test('ZA-1 Full cart flow and invalid registration validation', async({ searchCo
     await cookieModal.cookiesModalHidden();
 
     await searchComponents.goto();
-    await searchComponents.clickOnProductWithMoreThanFourSizes();
+    await searchComponents.clickOnProductWithFourOrMoreSizes();
 
     await productPage.addAllAvailableSizes();
     await productPage.openCart();
