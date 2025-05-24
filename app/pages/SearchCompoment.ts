@@ -13,7 +13,7 @@ export class SearchComponents extends BasePage {
 
     async goto() {
         await this.page.goto('ua/en/search/home');
-        await this.page.waitForLoadState('networkidle');
+        await this.page.waitForResponse('https://www.zara.com/integration/zenit/topics/meccano.za.pro.store.impressions.input.v1')
 
     }
 
@@ -32,7 +32,7 @@ export class SearchComponents extends BasePage {
             const sizeCount = await sizeButtons.count();
 
             if (sizeCount >= 4) {
-                await product.click();
+                await product.locator('[data-qa-action="product-click"]').nth(1).click();
                 break;
             }
             await this.page.keyboard.press('Escape');
