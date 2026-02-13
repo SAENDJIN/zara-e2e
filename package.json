@@ -4,14 +4,15 @@
   "main": "index.js",
   "scripts": {
     "test:chromium": "playwright test --project=chromium",
-    "test:firefox" : "playwright test --project=firefox",
-    "test:webkit"  : "playwright test --project=webkit"
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@argos-ci/playwright": "^6.4.1",
     "@playwright/test": "^1.52.0",
     "@types/node": "^22.15.17"
   }

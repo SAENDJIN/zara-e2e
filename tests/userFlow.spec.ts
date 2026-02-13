@@ -1,7 +1,10 @@
 import { test } from "../app/fixtures/fixtures"
+import { argosScreenshot } from "@argos-ci/playwright";
 
-test('ZA-1 Full cart flow and invalid registration validation', async({ searchComponents, cookieModal, productPage, cartPage, registrationPage })=> {
+
+test('ZA-1 Full cart flow and invalid registration validation', async({page, searchComponents, cookieModal, productPage, cartPage, registrationPage })=> {
     await cookieModal.goto();
+    await argosScreenshot(page, "homepage");
     await cookieModal.btnsVisible();
     await cookieModal.acceptAllCookies();
     await cookieModal.cookiesModalHidden();
