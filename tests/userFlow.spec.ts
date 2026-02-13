@@ -10,6 +10,7 @@ test('ZA-1 Full cart flow and invalid registration validation', async({page, sea
     await cookieModal.cookiesModalHidden();
 
     await searchComponents.goto();
+    await argosScreenshot(page, "search");
     await searchComponents.clickOnProductWithFourOrMoreSizes();
 
     await productPage.addAllAvailableSizes();
